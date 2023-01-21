@@ -19,6 +19,8 @@ def hello_world():  # put application's code here
         decodedObjects = pyzbar.decode(frame)
         for obj in decodedObjects:
             print("Data", obj.data)
+            with open("C:\\Users\\Rogue\\PycharmProjects\\ScoutingQR2023\\AllData.csv", "a") as allData:
+                allData.write(str(obj.data)+"\n")
             return obj.data
             #cv2.putText(frame, str(obj.data), (50, 50), font, 2,
                         #(255, 0, 0), 3)
