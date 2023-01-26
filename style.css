@@ -1,0 +1,30 @@
+html, body {
+  font-family: Consolas, Lucida Console, Courier;
+}
+h1{
+  text-align: center;
+}
+form{
+  text-align: left;
+}
+input[type='number']{
+  width: 35px;
+}
+.teamNumber{
+  width: 40px;
+}
+.comment{
+  width: 250px;
+}
+#qrcode {
+  width:200px;
+  height:200px;
+  margin-top: 25px;
+  margin-bottom: 75px;
+}
+#page1 {
+  display: block;
+}
+#page2 {
+  display: none;
+}

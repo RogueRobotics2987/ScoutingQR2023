@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<script src="qrcode.js"> </script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Scouting Sheet</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="page1">
+    <h1>Robotics Scouting Sheet</h1>
+    <hr>
+    <form>
+      What color combination do you want?
+      <table>
+        <tr>
+          <td><input type="button" value="Black and White" onclick="blackWhite()"></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Black and Mint" onclick="blackMint()"></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Black and Red" onclick="blackRed()"></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Purple and Yellow" onclick="purpleYellow()"></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Blue and Orange" onclick="blueOrange()"></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Light Blue and White" onclick="lightBlueWhite()"></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="Blue and Purple" onclick="bluePurple()"></td>
+        </tr>
+      </table> <br>
+      What are your names?
+      <table>
+        <tr>
+          <td>Person 1:</td>
+          <td><input required type="text" value="insert" id="name1"></td>
+        </tr>
+        <tr>
+          <td>Person 2:</td>
+          <td><input required type="text" value="insert" id="name2"></td>
+        </tr>
+      </table> <br>
+      What is the match number?
+      <table>
+        <tr>
+          <td><input required type="text" value="insert" id="matchNumber"></td>
+        </tr>
+      </table> <br>
+      What team are you scouting?
+      <table>
+        <tr>
+          <td><input required type="text" value="insert" id="teamNumber"></td>
+        </tr>
+      </table> <br>
+      Did they leave the community in autonomous?
+      <table>
+        <tr>
+          <td>Yes</td>
+          <td><input type="radio" name="leftBase" id="leftBaseYes"></td>
+        </tr>
+        <tr>
+          <td>No</td>
+          <td><input type="radio" name="leftBase" id="leftBaseNo"></td>
+        </tr>
+      </table> <br>
+      How many items did they place in autonomous?
+      <table>
+        <tr>
+          <td>High Cones</td>
+          <td><input type="number" min="0" id="autoHCones" value="0"></td>
+        </tr>
+        <tr>
+          <td>Medium Cones</td>
+          <td><input type="number" min="0" id="autoMCones" value="0"></td>
+        </tr>
+        <tr>
+          <td>Low Cones</td>
+          <td><input type="number" min="0" id="autoLCones" value="0"></td>
+        </tr>
+        <tr>
+          <td>High Cubes</td>
+          <td><input type="number" min="0" id="autoHCubes" value="0"></td>
+        </tr>
+        <tr>
+          <td>Medium Cubes</td>
+          <td><input type="number" min="0" id="autoMCubes" value="0"></td>
+        </tr>
+        <tr>
+          <td>Low Cubes</td>
+          <td><input type="number" min="0" id="autoLCubes" value="0"></td>
+        </tr>
+      </table> <br>
+      Did they drive onto the charging station in autonomous?
+      <table>
+        <tr>
+          <td>Yes, and it was balanced</td>
+          <td><input type="radio" name="autoCharge" id="autoChargeBalance"></td>
+        </tr>
+        <tr>
+          <td>Yes, but it didn't balance</td>
+          <td><input type="radio" name="autoCharge" id="autoChargeNoBalance"></td>
+        </tr>
+        <tr>
+          <td>No</td>
+          <td><input type="radio" name="autoCharge" id="autoChargeNo"></td>
+        </tr>
+      </table> <br>
+      How many items did they place in tele-op? <br>
+      <table>
+        <tr>
+          <td>High Cones</td>
+          <td><input type="number" min="0" id="teleopHCones" value="0"></td>
+        </tr>
+        <tr>
+          <td>Medium Cones</td>
+          <td><input type="number" min="0" id="teleopMCones" value="0"></td>
+        </tr>
+        <tr>
+          <td>Low Cones</td>
+          <td><input type="number" min="0" id="teleopLCones" value="0"></td>
+        </tr>
+        <tr>
+          <td>High Cubes</td>
+          <td><input type="number" min="0" id="teleopHCubes" value="0"></td>
+        </tr>
+        <tr>
+          <td>Medium Cubes</td>
+          <td><input type="number" min="0" id="teleopMCubes" value="0"></td>
+        </tr>
+        <tr>
+          <td>Low Cubes</td>
+          <td><input type="number" min="0" id="teleopLCubes" value="0"></td>
+        </tr>
+      </table> <br>
+      Did they drive onto the charging station in tele-op?
+      <table>
+        <tr>
+          <td>Yes, and it was balanced</td>
+          <td><input type="radio" name="teleopCharge" id="teleopChargeBalance"></td>
+        </tr>
+        <tr>
+          <td>Yes, but it didn't balance</td>
+          <td><input type="radio" name="teleopCharge" id="teleopChargeNoBalance"></td>
+        </tr>
+        <tr>
+          <td>No</td>
+          <td><input type="radio" name="teleopCharge" id="teleopChargeNo"></td>
+        </tr>
+      </table> <br>
+      Other comments:
+      <table>
+        <td><input class="comment" type="text" value="No comment" id="comments" width="50px"></td>
+      </table>
+      <input type="button" id="bt" value="Save data" onclick="saveFile()">
+    </form>
+  </div>
+  <div id="page2">
+    <div id="qrcode"></div>
+    <input type="button" value="Go back" onclick="backstep()">
+  </div>
+</body>
+
+<script type="text/javascript">
+  let backstep = () => {
+    location.reload();
+  }
+  let blackWhite = () => {
+    document.body.style.color = "black";
+    document.body.style.background = "white";
+  }
+  let blackMint = () => {
+    document.body.style.color = "#1ee6aa";
+    document.body.style.background = "#2C2F33";
+  }
+  let blackRed = () => {
+    document.body.style.color = "#e32222";
+    document.body.style.background = "#2C2F33";
+  }
+  let purpleYellow = () => {
+    document.body.style.color = "#FFC62F";
+    document.body.style.background = "#4F2683";
+  }
+  let blueOrange = () => {
+    document.body.style.color = "#FC4C02";
+    document.body.style.background = "#005778";
+  }
+  let lightBlueWhite = () => {
+    document.body.style.color = "#FFFFFF";
+    document.body.style.background = "#ADD8E6";
+  }
+  let bluePurple = () => {
+    document.body.style.color = "#ADD8E6";
+    document.body.style.background = "#4F2683";
+  }
+  let saveFile = () => {
+    // Get the data from each element on the form.
+    const name1 = document.getElementById('name1');
+    const name2 = document.getElementById('name2');
+    const matchNumber = document.getElementById('matchNumber');
+    const teamNumber = document.getElementById('teamNumber');
+    const leftBaseYes = document.getElementById('leftBaseYes');
+    const leftBaseNo = document.getElementById('leftBaseNo');
+    const autoHCones = document.getElementById('autoHCones');
+    const autoMCones = document.getElementById('autoMCones');
+    const autoLCones = document.getElementById('autoLCones');
+    const autoHCubes = document.getElementById('autoHCubes');
+    const autoMCubes = document.getElementById('autoMCubes');
+    const autoLCubes = document.getElementById('autoLCubes');
+    const autoChargeBalance = document.getElementById('autoChargeBalance');
+    const autoChargeNoBalance = document.getElementById('autoChargeNoBalance');
+    const autoChargeNo = document.getElementById('autoChargeNo');
+    const teleopHCones = document.getElementById('teleopHCones');
+    const teleopMCones = document.getElementById('teleopMCones');
+    const teleopLCones = document.getElementById('teleopLCones');
+    const teleopHCubes = document.getElementById('teleopHCubes');
+    const teleopMCubes = document.getElementById('teleopMCubes');
+    const teleopLCubes = document.getElementById('teleopLCubes');
+    const teleopChargeBalance = document.getElementById('teleopChargeBalance');
+    const teleopChargeNoBalance = document.getElementById('teleopChargeNoBalance');
+    const teleopChargeNo = document.getElementById('teleopChargeNo');
+    const comments = document.getElementById('comments');
+    // This variable stores all the data.
+    var data =
+      name1.value + '|' + //Name 1
+      name2.value + '|' + //Name 2
+      matchNumber.value + '|' + //Match Number
+      teamNumber.value + '|' + //Team Number
+      leftBaseYes.checked + '|' + //Left Base Yes
+      leftBaseNo.checked + '|' + //Left Base No
+      autoHCones.value + '|' + //Auto High Cone
+      autoMCones.value + '|' + //Auto Mid Cone
+      autoLCones.value + '|' + //Auto Low Cone
+      autoHCubes.value + '|' + //Auto High Cube
+      autoMCubes.value + '|' + //Auto Mid Cube
+      autoLCubes.value + '|' + //Auto Low Cube
+      autoChargeBalance.checked + '|' + //Auto CS Engaged
+      autoChargeNoBalance.checked + '|' + //Auto CS Docked
+      autoChargeNo.checked + '|' + //Auto CS No
+      teleopHCones.value + '|' + //Tele High Cone
+      teleopMCones.value + '|' + //Tele Mid Cone
+      teleopLCones.value + '|' + //Tele Low Cone
+      teleopHCubes.value + '|' + //Tele High Cube
+      teleopMCubes.value + '|' + //Tele Mid Cube
+      teleopLCubes.value + '|' + //Tele Low Cube
+      teleopChargeBalance.checked + '|' + //Tele CS Engaged
+      teleopChargeNoBalance.checked + '|' + //Tele CS Docked
+      teleopChargeNo.checked + '|' + //Tele CS No
+      comments.value; //Comments
+    //Convert the text to BLOB.
+    // const textToBLOB = new Blob([data], {type: 'text/plain'});
+    // const sFileName = 'formData.txt';	   // The file to save the data.
+    // let newLink = document.createElement("a");
+    // newLink.download = sFileName;
+    // if (window.webkitURL != null) {
+    //   newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+    // }
+    // else {
+    //   newLink.href = window.URL.createObjectURL(textToBLOB);
+    //   newLink.style.display = "none";
+    //   document.body.appendChild(newLink);
+    // }
+    // newLink.click();
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+    new QRCode(document.getElementById("qrcode"), data);
+    console.log(data)
+  }
+</script>
+
+</html>
