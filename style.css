@@ -1,8 +1,10 @@
 html, body {
   font-family: Consolas, Lucida Console, Courier;
+  margin: 0;
 }
 h1{
   text-align: center;
+  margin: 0;
 }
 form{
   text-align: left;
@@ -24,6 +26,7 @@ input[type='number']{
 }
 #page1 {
   display: block;
+  border: none;
 }
 #page2 {
   display: none;

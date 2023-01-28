@@ -174,32 +174,32 @@
     location.reload();
   }
   let blackWhite = () => {
-    document.body.style.color = "black";
-    document.body.style.background = "white";
+    document.getElementById("page1").style.color = "black";
+    document.getElementById("page1").style.background = "white";
   }
   let blackMint = () => {
-    document.body.style.color = "#1ee6aa";
-    document.body.style.background = "#2C2F33";
+    document.getElementById("page1").style.color = "#1ee6aa";
+    document.getElementById("page1").style.background = "#2C2F33";
   }
   let blackRed = () => {
-    document.body.style.color = "#e32222";
-    document.body.style.background = "#2C2F33";
+    document.getElementById("page1").style.color = "#e32222";
+    document.getElementById("page1").style.background = "#2C2F33";
   }
   let purpleYellow = () => {
-    document.body.style.color = "#FFC62F";
-    document.body.style.background = "#4F2683";
+    document.getElementById("page1").style.color = "#FFC62F";
+    document.getElementById("page1").style.background = "#4F2683";
   }
   let blueOrange = () => {
-    document.body.style.color = "#FC4C02";
-    document.body.style.background = "#005778";
+    document.getElementById("page1").style.color = "#FC4C02";
+    document.getElementById("page1").style.background = "#005778";
   }
   let lightBlueWhite = () => {
-    document.body.style.color = "#FFFFFF";
-    document.body.style.background = "#ADD8E6";
+    document.getElementById("page1").style.color = "#FFFFFF";
+    document.getElementById("page1").style.background = "#ADD8E6";
   }
   let bluePurple = () => {
-    document.body.style.color = "#ADD8E6";
-    document.body.style.background = "#4F2683";
+    document.getElementById("page1").style.color = "#ADD8E6";
+    document.getElementById("page1").style.background = "#4F2683";
   }
   let saveFile = () => {
     // Get the data from each element on the form.
@@ -207,53 +207,102 @@
     const name2 = document.getElementById('name2');
     const matchNumber = document.getElementById('matchNumber');
     const teamNumber = document.getElementById('teamNumber');
-    const leftBaseYes = document.getElementById('leftBaseYes');
-    const leftBaseNo = document.getElementById('leftBaseNo');
+    var leftBaseYes = document.getElementById('leftBaseYes');
+    var leftBaseNo = document.getElementById('leftBaseNo');
     const autoHCones = document.getElementById('autoHCones');
     const autoMCones = document.getElementById('autoMCones');
     const autoLCones = document.getElementById('autoLCones');
     const autoHCubes = document.getElementById('autoHCubes');
     const autoMCubes = document.getElementById('autoMCubes');
     const autoLCubes = document.getElementById('autoLCubes');
-    const autoChargeBalance = document.getElementById('autoChargeBalance');
-    const autoChargeNoBalance = document.getElementById('autoChargeNoBalance');
-    const autoChargeNo = document.getElementById('autoChargeNo');
+    var autoChargeBalance = document.getElementById('autoChargeBalance');
+    var autoChargeNoBalance = document.getElementById('autoChargeNoBalance');
+    var autoChargeNo = document.getElementById('autoChargeNo');
     const teleopHCones = document.getElementById('teleopHCones');
     const teleopMCones = document.getElementById('teleopMCones');
     const teleopLCones = document.getElementById('teleopLCones');
     const teleopHCubes = document.getElementById('teleopHCubes');
     const teleopMCubes = document.getElementById('teleopMCubes');
     const teleopLCubes = document.getElementById('teleopLCubes');
-    const teleopChargeBalance = document.getElementById('teleopChargeBalance');
-    const teleopChargeNoBalance = document.getElementById('teleopChargeNoBalance');
-    const teleopChargeNo = document.getElementById('teleopChargeNo');
+    var teleopChargeBalance = document.getElementById('teleopChargeBalance');
+    var teleopChargeNoBalance = document.getElementById('teleopChargeNoBalance');
+    var teleopChargeNo = document.getElementById('teleopChargeNo');
     const comments = document.getElementById('comments');
+    // The next 40 lines are converting radio buttons true/false into 1s and 0s
+    if (leftBaseYes.checked == true) {
+      leftBaseYes = 1;
+    }
+    else {
+      leftBaseYes = 0;
+    }
+    if (leftBaseNo.checked == true) {
+      leftBaseNo = 1;
+    }
+    else {
+      leftBaseNo = 0;
+    }
+    if (autoChargeBalance.checked == true) {
+      autoChargeBalance = 1;
+    }
+    else {
+      autoChargeBalance = 0;
+    }
+    if (autoChargeNoBalance.checked == true) {
+      autoChargeNoBalance = 1;
+    }
+    else {
+      autoChargeNoBalance = 0;
+    }
+    if (autoChargeNo.checked == true) {
+      autoChargeNo = 1;
+    }
+    else {
+      autoChargeNo = 0;
+    }
+    if (teleopChargeBalance.checked == true) {
+      teleopChargeBalance = 1;
+    }
+    else {
+      teleopChargeBalance = 0;
+    }
+    if (teleopChargeNoBalance.checked == true) {
+      teleopChargeNoBalance = 1;
+    }
+    else {
+      teleopChargeNoBalance = 0;
+    }
+    if (teleopChargeNo.checked == true) {
+      teleopChargeNo = 1;
+    }
+    else {
+      teleopChargeNo = 0;
+    }
     // This variable stores all the data.
     var data =
       name1.value + '|' + //Name 1
       name2.value + '|' + //Name 2
       matchNumber.value + '|' + //Match Number
       teamNumber.value + '|' + //Team Number
-      leftBaseYes.checked + '|' + //Left Base Yes
-      leftBaseNo.checked + '|' + //Left Base No
+      leftBaseYes + '|' + //Left Base Yes
+      leftBaseNo + '|' + //Left Base No
       autoHCones.value + '|' + //Auto High Cone
       autoMCones.value + '|' + //Auto Mid Cone
       autoLCones.value + '|' + //Auto Low Cone
       autoHCubes.value + '|' + //Auto High Cube
       autoMCubes.value + '|' + //Auto Mid Cube
       autoLCubes.value + '|' + //Auto Low Cube
-      autoChargeBalance.checked + '|' + //Auto CS Engaged
-      autoChargeNoBalance.checked + '|' + //Auto CS Docked
-      autoChargeNo.checked + '|' + //Auto CS No
+      autoChargeBalance + '|' + //Auto CS Engaged
+      autoChargeNoBalance + '|' + //Auto CS Docked
+      autoChargeNo + '|' + //Auto CS No
       teleopHCones.value + '|' + //Tele High Cone
       teleopMCones.value + '|' + //Tele Mid Cone
       teleopLCones.value + '|' + //Tele Low Cone
       teleopHCubes.value + '|' + //Tele High Cube
       teleopMCubes.value + '|' + //Tele Mid Cube
       teleopLCubes.value + '|' + //Tele Low Cube
-      teleopChargeBalance.checked + '|' + //Tele CS Engaged
-      teleopChargeNoBalance.checked + '|' + //Tele CS Docked
-      teleopChargeNo.checked + '|' + //Tele CS No
+      teleopChargeBalance + '|' + //Tele CS Engaged
+      teleopChargeNoBalance + '|' + //Tele CS Docked
+      teleopChargeNo + '|' + //Tele CS No
       comments.value; //Comments
     //Convert the text to BLOB.
     // const textToBLOB = new Blob([data], {type: 'text/plain'});
